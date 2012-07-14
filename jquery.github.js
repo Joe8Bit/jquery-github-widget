@@ -13,7 +13,7 @@
  * 		width: [String] a CSS compliant value representing a width (px/%/em/pt)
  * 		show_repos: [Number] The number of repos that should be displayed
  * 		oldest_first: [Boolean] The default is to show the most recent repo first, set this to true to show the oldest first
- * 		
+ *
  */
 ;(function ($, window, document, undefined) {
 	"use strict";
@@ -47,7 +47,7 @@
 			var el = this.element,
 				options = this.options,
 				user = this.model("user", options.user, function(data){
-					// Build layout view with user data and append it to the specified element 
+					// Build layout view with user data and append it to the specified element
 					$(el).append(Github.prototype.view_layout(data.data, options));
 				}),
 				repos = this.model("repos", options.user, function(data){
@@ -105,7 +105,7 @@
 						markup += user.location;
 					}
 					markup += '</p>';
-					if (typeof user.bio !== "undefined" && user.bio.length > 0){
+					if (typeof user.bio === "string" && user.bio.length > 0){
 						markup += '<p class="bio">' + user.bio + '</p>';
 					}
 					if (user.hireable === true){
