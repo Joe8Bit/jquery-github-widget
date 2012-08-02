@@ -1,5 +1,5 @@
 /*Root wrapper*/
-#github {
+#ghw-github {
 	font-size: 13px;
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
 	-webkit-border-radius: 3px;
@@ -8,16 +8,16 @@
 	color: #444;
 }
 /*Utility styles*/
-.clear:after { content: "."; display: block; height: 0; clear: both; visibility: hidden;}
-html[xmlns] .clear { display: block;}
-* html .clear { height: 1%;}
+.ghw-clear:after { content: "."; display: block; height: 0; clear: both; visibility: hidden;}
+html[xmlns] .ghw-clear { display: block;}
+* html .ghw-clear { height: 1%;}
 
-#github #header #logo a, #github #repos .fork {
+#ghw-github #ghw-header #ghw-logo a, #ghw-github #ghw-repos .ghw-fork {
 	background-image: url("github-sprite.png");
 	background-repeat: no-repeat;
 }
 /*Header*/
-#github #header, #github #footer {
+#ghw-github #ghw-header, #ghw-github #ghw-footer {
 	background: #d6d3d2;
 	background: -moz-linear-gradient(top, #d6d3d2 0%, #a9aaa7 100%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d6d3d2), color-stop(100%,#a9aaa7));
@@ -27,7 +27,7 @@ html[xmlns] .clear { display: block;}
 	background: linear-gradient(top, #d6d3d2 0%,#a9aaa7 100%)
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6d3d2', endColorstr='#a9aaa7',GradientType=0 );
 }
-#github #header {
+#ghw-github #ghw-header {
 	padding: 10px 10px 8px;
 	border-top: 1px solid #eeedee;
 	border-bottom:: 1px solid #bcb9b9;
@@ -37,11 +37,11 @@ html[xmlns] .clear { display: block;}
 	border-top-right-radius: 3px;
 	position: relative;
 }
-#github #header #logo {
+#ghw-github #ghw-header #ghw-logo {
 	float: left;
 	margin-top: 1px;
 }
-#github #header #logo a {
+#ghw-github #ghw-header #ghw-logo a {
 	display: block;
 	width: 70px;
 	height: 31px;
@@ -49,13 +49,13 @@ html[xmlns] .clear { display: block;}
 	color: #444;
 	background-position: 0px 0px;
 }
-#github #header #user {
+#ghw-github #ghw-header #ghw-user {
 	float: right;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	border-bottom: 1px solid #c0c4c1;
 }
-#github #header #user img {
+#ghw-github #ghw-header #ghw-user img {
 	display: block;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
@@ -63,13 +63,13 @@ html[xmlns] .clear { display: block;}
 	box-shadow: inset 1px 1px 1px 0px rgba(0,0,0,0.7);
 	border: 1px solid rgba(0,0,0,0.7);
 }
-.no-bottom-border {
+.ghw-no-bottom-border {
 	-webkit-border-bottom-right-radius: 0!important;
 	-webkit-border-bottom-left-radius: 0!important;
 	border-bottom-right-radius: 0!important;
 	border-bottom-left-radius: 0!important;
 }
-#github #header #extended-user-info {
+#ghw-github #ghw-header #ghw-extended-user-info {
 	display: none;
 	position: absolute;
 	width: 60%;
@@ -87,38 +87,38 @@ html[xmlns] .clear { display: block;}
 	border-top-right-radius: 0;
 	z-index: 500;
 }
-#github #header #extended-user-info .name {
+#ghw-github #ghw-header #ghw-extended-user-info .ghw-name {
 	font-size: 13px;
 }
-#github #header #extended-user-info .place {
+#ghw-github #ghw-header #ghw-extended-user-info .ghw-place {
 	opacity: 0.5;
 	-moz-opacity: 0.5;
 	filter:alpha(opacity=5);
 }
-#github #header #extended-user-info .bio {
+#ghw-github #ghw-header #ghw-extended-user-info .ghw-bio {
 	border-top: 1px solid rgba(255,255,255,0.4);
 	padding-top: 15px;
 	margin: 15px 0px 25px;
 }
-#github #header #extended-user-info .repos, #github #header #extended-user-info .gists {
+#ghw-github #ghw-header #ghw-extended-user-info .ghw-repos, #ghw-github #ghw-header #ghw-extended-user-info .ghw-gists {
 	display: inline-block;
 	padding: 3px 5px 4px;
 	-webkit-border-radius: 2px;
     border-radius: 2px;
     margin-right: 10px;
 }
-#github #header #extended-user-info .repos {
+#ghw-github #ghw-header #ghw-extended-user-info .ghw-repos {
 	background: #7e943a;
 	text-shadow: 1px 1px 1px #64772a;
 }
-#github #header #extended-user-info .gists {
+#ghw-github #ghw-header #ghw-extended-user-info .ghw-gists {
 	background: #357292;
 	text-shadow: 1px 1px 1px #1e4e67;
 }
-#github #header #extended-user-info p {
+#ghw-github #ghw-header #ghw-extended-user-info p {
 	margin: 0px;
 }
-#github #header #github-user-data {
+#ghw-github #ghw-header #ghw-github-user-data {
 	float: right;
 	margin: 3px 0px 0px 0px;
 	padding: 0px 12px;
@@ -126,65 +126,65 @@ html[xmlns] .clear { display: block;}
 	text-align: right;
 	color: #9f9f9f;
 }
-#github #header #github-user-data h2 {
+#ghw-github #ghw-header #ghw-github-user-data h2 {
 	margin: 0px;
 	line-height: 12px;
 }
-#github #header #github-user-data h2 a {
+#ghw-github #ghw-header #ghw-github-user-data h2 a {
 	font-size: 14px;
 	font-weight: normal;
 	text-decoration: none;
 	color: #444;
 	text-shadow: 1px 1px 1px #fff;
 }
-#github #header #github-user-data a:hover {
+#ghw-github #ghw-header #ghw-github-user-data a:hover {
 	opacity: 0.8;
 	-moz-opacity: 0.8;
 	filter:alpha(opacity=8);
 }
-#github #header #github-user-data #current-followers, #github #header #github-user-data #header-total-repos {
-	color: #686868;
-	text-decoration: none;
-	font-size: 11px;
+#ghw-github #ghw-header #ghw-github-user-data #ghw-current-followers, #ghw-github #ghw-header #ghw-github-user-data #ghw-header-total-repos {
+	color: #686868!important;
+	text-decoration: none!important;
+	font-size: 11px!important;
 }
-#github #repos {
+#ghw-github #ghw-repos {
 	background: #fff;
 	border-top: 1px solid #868686;
 }
-#github #repos #github-loader {
+#ghw-github #ghw-repos #ghw-github-loader {
 	width: 100%;
 	height: 200px;
 	background: url("https://a248.e.akamai.net/assets.github.com/images/spinners/octocat-spinner-32.gif") center no-repeat;
 }
-#github #repos ul {
+#ghw-github #ghw-repos ul {
 	display: none;
 	padding: 0px;
 	margin: 0px;
 }
-#github #repos li {
+#ghw-github #ghw-repos li {
 	list-style: none;
 	border-bottom: 1px solid #e3e3e3;
 	padding: 13px;
 }
-#github #repos li p {
+#ghw-github #ghw-repos li p {
 	margin: 0px;
 	padding: 0px;
 }
-#github #repos li .left {
+#ghw-github #ghw-repos li .ghw-left {
 	float: left;
 	width: 70%:
 }
-#github #repos li .right {
+#ghw-github #ghw-repos li .ghw-right {
 	float: right;
 	width: 30%;
 	opacity: 0.3;
 	-moz-opacity: 0.3;
 	filter:alpha(opacity=3);
 }
-#github #repos li.double .right {
+#ghw-github #ghw-repos li.ghw-double .ghw-right {
 	margin-top: 5px;
 }
-#github #repos li .right span {
+#ghw-github #ghw-repos li .ghw-right span {
 	display: inline-block;
 	padding: 3px 7px;
 	color: #fff;
@@ -196,7 +196,7 @@ html[xmlns] .clear { display: block;}
     float: right;
     position: relative;
 }
-#github .github-tooltip-content {
+#ghw-github .ghw-github-tooltip-content {
 	position: absolute;
 	top: 23px;
 	background: rgba(0,0,0,0.9);
@@ -211,28 +211,28 @@ html[xmlns] .clear { display: block;}
 	min-width: 150px;
 	text-align: center;
 }
-#github #repos li .right .forks {
+#ghw-github #ghw-repos li .ghw-right .ghw-forks {
 	background: #7e943a;
 }
-#github #repos li .right .watchers {
+#ghw-github #ghw-repos li .ghw-right .ghw-watchers {
 	background: #357292;
 }
-#github #repos li .right .issues {
+#ghw-github #ghw-repos li .ghw-right .ghw-issues {
 	background: #a53131;
 }
 
-#github #repos li .meta-data {
+#ghw-github #ghw-repos li .ghw-meta-data {
 	font-size: 11px;
 	color: #999;
 }
-#github #repos .fork {
+#ghw-github #ghw-repos .ghw-fork {
 	padding-left: 18px;
 	background-position: 0px -35px;
 }
-#github #repos li {
+#ghw-github #ghw-repos li {
 	position: relative;
 }
-#github #repos li:last-child {
+#ghw-github #ghw-repos li:last-child {
 	-webkit-border-bottom-right-radius: 3px;
 	-webkit-border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
@@ -241,11 +241,11 @@ html[xmlns] .clear { display: block;}
 	-webkit-background-clip: padding-box; 
 	background-clip: padding-box;
 }
-#github #repos li .title a {
+#ghw-github #ghw-repos li .ghw-title a {
 	color: #444;
 	text-decoration: none;
 }
-#github #repos li .title a .github-tooltip-content {
+#ghw-github #ghw-repos li .ghw-title a .ghw-github-tooltip-content {
 	left: 5px;
 	top: 6px;
 	font-size: 11px;
@@ -254,14 +254,14 @@ html[xmlns] .clear { display: block;}
 	line-height: 120%;
 	color: #999;
 }
-#github #repos li .title a .github-tooltip-content p {
+#ghw-github #ghw-repos li .ghw-title a .ghw-github-tooltip-content p {
 	font-size: 13px;
 	margin-bottom: 10px;
 	color: #fff;
 }
-#github #repos li .title a:hover{
+#ghw-github #ghw-repos li .ghw-title a:hover{
 	text-decoration: underline;
 }
-#github #repos li:last-child {
+#ghw-github #ghw-repos li:last-child {
 	border-bottom: 0px;
 }

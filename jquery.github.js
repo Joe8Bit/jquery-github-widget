@@ -52,10 +52,10 @@
 				}),
 				repos = this.model("repos", options.user, function(data){
 					// Build our repos partial and append it to the layout, which is already in the DOM
-					$(el).find("#repos ul").append(Github.prototype.view_partial_repos(data, options, el));
+					$(el).find("#ghw-repos ul").append(Github.prototype.view_partial_repos(data, options, el));
 					// Fade out the Github loader gif, and then fade in the repos we just appended
-					$(el).find("#repos #github-loader").slideUp(250, function(){
-						$(el).find("#repos ul").slideDown(250);
+					$(el).find("#ghw-repos #ghw-github-loader").slideUp(250, function(){
+						$(el).find("#ghw-repos ul").slideDown(250);
 					});
 					// Init our bind function once everything is present within the DOM
 					Github.prototype.bind(options);
@@ -79,10 +79,10 @@
 		view_layout: function (user, options) {
 			var markup = '';
 				// As it's setting a simple string, the width value can be anything acceptable to CSS (px/%/em/pt etc)
-				markup += '<div id="github" style="width: ' + options.width + '">';
-				markup += '<div id="header" class="clear">';
-				markup += '<div id="logo"><a href="https://github.com/">Github</a></div>';
-				markup += '<div id="user"><a href="' + user.html_url + '" id="github-user">';
+				markup += '<div id="ghw-github" style="width: ' + options.width + '">';
+				markup += '<div id="ghw-header" class="ghw-clear">';
+				markup += '<div id="ghw-logo"><a href="https://github.com/">Github</a></div>';
+				markup += '<div id="ghw-user"><a href="' + user.html_url + '" id="ghw-github-user">';
 				// If the user has a custom avatar then show it, if not display the default github avatar (served from their CDN)
 				if (typeof user.avatar_url !== "undefined" && user.avatar_url.length > 0){
 					markup += '<img src="' + user.avatar_url + '" alt="Avatar" width="34px" height="34px" />';
@@ -93,11 +93,11 @@
 				// Check if we should show the extended info, a custom option
 				// Within extended info we need to check for the existence of elements, as not everyone has the same info set in their Github profile
 				if (options.show_extended_info === true){
-					markup += '<div id="extended-user-info">';
+					markup += '<div id="ghw-extended-user-info">';
 					if (typeof user.name !== "undefined" && user.name.length > 0){
-						markup += '<p class="name">' + user.name + '</p>';
+						markup += '<p class="ghw-name">' + user.name + '</p>';
 					}
-					markup += '<p class="place">';
+					markup += '<p class="ghw-place">';
 					if (typeof user.company !== "undefined" && user.company.length > 0){
 						markup += user.company + ' ' ;
 					}
@@ -106,26 +106,26 @@
 					}
 					markup += '</p>';
 					if (typeof user.bio === "string" && user.bio.length > 0){
-						markup += '<p class="bio">' + user.bio + '</p>';
+						markup += '<p class="ghw-bio">' + user.bio + '</p>';
 					}
 					if (user.hireable === true){
-						markup += '<p class="hireable">I\'m availabe for hire!</p>';
+						markup += '<p class="ghw-hireable">I\'m availabe for hire!</p>';
 					}
-					markup += '<span class="repos">' + user.public_repos + ' repos</span>';
-					markup += '<span class="gists">' + user.public_gists + ' gists</span>';
+					markup += '<span class="ghw-repos">' + user.public_repos + ' repos</span>';
+					markup += '<span class="ghw-gists">' + user.public_gists + ' gists</span>';
 					markup += '</div>';
 				}
-				markup += '<div id="github-user-data">';
+				markup += '<div id="ghw-github-user-data">';
 				markup += '<h2><a href="' + user.html_url + '">' + user.login + '</a></h2>'
-				markup += '<a href="' + user.html_url + '" id="header-total-repos">' + user.public_repos + ' repos</a>';
+				markup += '<a href="' + user.html_url + '" id="ghw-header-total-repos">' + user.public_repos + ' repos</a>';
 				// Check if the option to show followers is set to true, if not, don't show it
 				if (options.show_follows === true){
-					markup += ' | <a href="https://github.com/' + user.login.toLowerCase() + '/followers" id="current-followers">' + user.followers + ' followers</a>';
+					markup += ' | <a href="https://github.com/' + user.login.toLowerCase() + '/followers" id="ghw-current-followers">' + user.followers + ' followers</a>';
 				}
 				markup += '</div>'
 				markup += '</div>';
 				// The element which the repos partial will eventually be appended to
-				markup += '<div id="repos"><div id="github-loader"></div><ul></ul></div>'
+				markup += '<div id="ghw-repos"><div id="ghw-github-loader"></div><ul></ul></div>'
 				markup += '</div>';
 				return markup;
 		},
@@ -144,7 +144,7 @@
 			$.each(data, function(i){
 				// Github returns pages of 30 repos per request, however we only want to show the number set in the options
 				if (i <= options.show_repos - 1){
-					markup += '<li id="repo-' + i +'" class="clear repo';
+					markup += '<li id="ghw-repo-' + i +'" class="ghw-clear ghw-repo';
 					// This is a little bit of a hack to make the CSS easier, if the repo has a language attribute, it will mean
 					// the box carries over two lines, which means the buttons on the right become missaligned. So therefore, if
 					// there are two lines, add a special class so we can style it more easily.
@@ -152,17 +152,17 @@
 						markup += ' double';
 					}
 					markup += '">';
-					markup += '<div class="left">';
-					markup += '<p class="title"><a href="' + this.html_url + '" data-description="<p>' + this.name +'</p>' + this.description + '" class="github-tooltip">' + this.name + '</a></p>';
-					markup += '<p class="meta-data">';
+					markup += '<div class="ghw-left">';
+					markup += '<p class="ghw-title"><a href="' + this.html_url + '" data-description="<p>' + this.name +'</p>' + this.description + '" class="ghw-github-tooltip">' + this.name + '</a></p>';
+					markup += '<p class="ghw-meta-data">';
 					if (this.language !== null){
-						markup += '<span class="language">' + this.language + '</span></p>';
+						markup += '<span class="ghw-language">' + this.language + '</span></p>';
 					}
 					markup += '</div>';
-					markup += '<div class="right">';
-					markup += '<span class="forks github-tooltip" data-description="This repo has ' + this.forks + ' fork(s)">' + this.forks + '</span>';
-					markup += '<span class="watchers github-tooltip" data-description="This repo has ' + this.watchers + ' watcher(s)">' + this.watchers + '</span>';
-					markup += '<span class="issues github-tooltip" data-description="This project has ' + this.open_issues + ' open issues">' + this.open_issues + '</span>';
+					markup += '<div class="ghw-right">';
+					markup += '<span class="ghw-forks ghw-github-tooltip" data-description="This repo has ' + this.forks + ' fork(s)">' + this.forks + '</span>';
+					markup += '<span class="ghw-watchers ghw-github-tooltip" data-description="This repo has ' + this.watchers + ' watcher(s)">' + this.watchers + '</span>';
+					markup += '<span class="ghw-issues ghw-github-tooltip" data-description="This project has ' + this.open_issues + ' open issues">' + this.open_issues + '</span>';
 					markup += '</div>';
 					markup += '</li>';
 				}
@@ -174,28 +174,28 @@
 		bind: function (options) {
 			// If the option to show the extended user info is set to true then bind it to do so
 			if (options.show_extended_info === true){
-				$("#github-user").hover(function(){
-					$("#github #header #extended-user-info").fadeIn(250, function(){
-						$("#github #header img").addClass("no-bottom-border");
+				$("#ghw-github-user").hover(function(){
+					$("#ghw-github #ghw-header #ghw-extended-user-info").fadeIn(250, function(){
+						$("#ghw-github #ghw-header img").addClass("ghw-ghw-no-bottom-border");
 					});
 				}, function(){
-					$("#github #header #extended-user-info").fadeOut(250, function(){
-						$("#github #header img").removeClass("no-bottom-border");
+					$("#ghw-github #ghw-header #ghw-extended-user-info").fadeOut(250, function(){
+						$("#ghw-github #ghw-header img").removeClass("ghw-ghw-no-bottom-border");
 					});
 				});
 			}
 			// Make the buttons become opaque when hovering over a repo row
-			$("#github li").hover(function(){
-				$(this).find(".right").animate({opacity: 1}, 200);
+			$("#ghw-github li").hover(function(){
+				$(this).find(".ghw-right").animate({opacity: 1}, 200);
 			}, function(){
-				$(this).find(".right").animate({opacity: 0.3}, 200);
+				$(this).find(".ghw-right").animate({opacity: 0.3}, 200);
 			});
 			// Our main tooltip function
-			$(".github-tooltip").hover(function(){
-				var markup = '<div class="github-tooltip-content">' + $(this).attr("data-description") +'</div>';
+			$(".ghw-github-tooltip").hover(function(){
+				var markup = '<div class="ghw-github-tooltip-content">' + $(this).attr("data-description") +'</div>';
 				$(this).append(markup);
 			}, function(){
-				$(".github-tooltip-content").remove();
+				$(".ghw-github-tooltip-content").remove();
 			});
 		}
 	};
