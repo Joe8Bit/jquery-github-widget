@@ -16,13 +16,34 @@ module.exports = function(grunt) {
 				dest: 'dist/jquery.github.min.js'
 			}
 		},
+		lint: {
+			files: ['src/**/*.js']
+		},
+		jshint: {
+			options: {
+				curly: true,
+				eqeqeq: true,
+				immed: true,
+				latedef: true,
+				newcap: true,
+				noarg: true,
+				sub: true,
+				undef: true,
+				boss: true,
+				eqnull: true,
+				browser: true
+			},
+			globals: {
+				jQuery: true
+			}
+		},
 		uglify: {
 			 mangle: {toplevel: true}
 		}
 	});
 
 	// Default task.
-	grunt.registerTask('default', 'min');
+	grunt.registerTask('default', 'lint min');
 
 };
 
