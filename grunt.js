@@ -16,6 +16,19 @@ module.exports = function(grunt) {
 				dest: 'dist/jquery.github.min.js'
 			}
 		},
+		cssmin: {
+			dist: {
+				src: ['<banner:meta.banner>', 'src/github.css'],
+				dest: 'dist/github.min.css'
+			}
+		},
+		jasmine: {
+			all: {
+				src:['specs/*.html'],
+				errorReporting: true,
+				timeout: 20000
+			}
+		},
 		lint: {
 			files: ['src/**/*.js']
 		},
@@ -43,7 +56,8 @@ module.exports = function(grunt) {
 	});
 
 	// Default task.
-	grunt.registerTask('default', 'lint min');
-
+	grunt.registerTask('default', 'lint jasmine min cssmin');
+	grunt.loadNpmTasks('grunt-jasmine-task');
+	grunt.loadNpmTasks('grunt-css');
 };
 

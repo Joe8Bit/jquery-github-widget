@@ -19,6 +19,8 @@
 		this.options = $.extend({}, defaults, options);
 		// Instantiate our init function, it inherits the options object, so we don't need to explicitly pass it
 		this.init();
+
+		this.errorType = '';
 	}
 
 	// Our Prototype!
@@ -99,10 +101,16 @@
 				markup += '</div>';
 			}
 			markup += '<div id="ghw-github-user-data">';
-			markup += '<h2><a href="' + user.html_url + '">' + user.login + '</a></h2>';
+			markup += '<h2><a href="' + user.html_url + '">';
+			if (typeof user.login !== "undefined") {
+				markup += user.login;
+			} else {
+				markup += 'User not found';
+			}
+			markup += '</a></h2>';
 			markup += '<a href="' + user.html_url + '" id="ghw-header-total-repos">' + user.public_repos + ' repos</a>';
 			// Check if the option to show followers is set to true, if not, don't show it
-			if (options.show_follows === true) {
+			if (options.show_follows === true && typeof user.login !== "undefined") {
 				markup += ' | <a href="https://github.com/' + user.login.toLowerCase() + '/followers" id="ghw-current-followers">' + user.followers + ' followers</a>';
 			}
 			markup += '</div>';
