@@ -6,6 +6,7 @@
 			user: "joepettersson",
 			show_extended_info: true,
 			show_follows: true,
+            sorter: null,
 			width: "400px",
 			show_repos: 10,
 			oldest_first: false
@@ -131,6 +132,11 @@
 			} else {
 				data = data.data;
 			}
+
+            // Custom sorter
+            if (typeof options.sorter === 'function')
+                data.sort(options.sorter);
+
 			// Iterate through the repos
 			$.each(data, function (i) {
 				// Github returns pages of 30 repos per request, however we only want to show the number set in the options
@@ -158,6 +164,7 @@
 					markup += '</li>';
 				}
 			});
+
 			return markup;
 		},
 
