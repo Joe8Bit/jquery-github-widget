@@ -134,8 +134,9 @@
 			}
 
             // Custom sorter
-            if (typeof options.sorter === 'function')
+            if (typeof options.sorter === 'function') {
                 data.sort(options.sorter);
+            }
 
 			// Iterate through the repos
 			$.each(data, function (i) {
