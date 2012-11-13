@@ -79,14 +79,14 @@
 			// Within extended info we need to check for the existence of elements, as not everyone has the same info set in their Github profile
 			if (options.show_extended_info === true) {
 				markup += '<div id="ghw-extended-user-info">';
-				if (typeof user.name !== "undefined" && user.name.length > 0) {
+				if (user.name && user.name.length) {
 					markup += '<p class="ghw-name">' + user.name + '</p>';
 				}
 				markup += '<p class="ghw-place">';
-				if (typeof user.company !== "undefined" && user.company.length > 0) {
+				if (user.company && user.company.length) {
 					markup += user.company + ' ';
 				}
-				if (typeof user.location !== "undefined" && user.location.length > 0) {
+				if (user.location && user.location.length) {
 					markup += user.location;
 				}
 				markup += '</p>';
