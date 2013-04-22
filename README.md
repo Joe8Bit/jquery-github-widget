@@ -80,6 +80,30 @@ The number of repos you wish to display within the widget, with a maximum of 30.
 
 As a default the widget prints a users repos with the recent first, as they are provided by Github, but if you would like to reverse the order (showing the oldest first) you should set this parameter to <code>true</code>.
 
+#####Customer sorter
+    sorter
+    	Accepted parameters: function/null
+
+In case you want to use custom sorting to promote certain repos to the top of the widget you can pass in a custom sort function. Example:
+
+    $(document).ready(function(){
+      var _opt = {
+        sorter: function(a, b) {
+          if (a.fork && b.fork)
+              return 0;
+          if (a.fork)
+              return 1;
+          if (b.fork)
+              return -1;
+
+          return 0;
+        },
+      };
+
+      $("#insert-here").github();
+      $("#insert-here2").github(_opt);
+    });
+
 ###FAQ
 
 --------
